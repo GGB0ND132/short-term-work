@@ -1,5 +1,16 @@
 这是一个homework
 
+# ！无法直连github 替换为镜像源
+```powershell
+# 原始地址
+# git clone https://github.com/GGB0ND132/short-term-work.git
+
+# 使用镜像地址（任选一个）
+git clone https://hub.nuaa.cf/GGB0ND132/short-term-work.git
+git clone https://hub.yzuu.cf/GGB0ND132/short-term-work.git
+git clone https://gitclone.com/github.com/GGB0ND132/short-term-work.git
+```
+
 # 一、环境配置
 1. 安装uv
 ```powershell
