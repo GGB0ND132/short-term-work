@@ -1,6 +1,29 @@
 这是一个homework
 
-# 一、贡献指南
+# 一、环境配置
+1. 安装uv
+```powershell
+pip install uv
+```
+
+2. 检查uv环境
+```powershell
+uv --version
+```
+如果有报错，请移步 https://github.com/astral-sh/uv 看看教程
+
+3. 创建虚拟环境并安装依赖
+```powershell
+cd your-local-project-path
+uv sync
+```
+4. 激活虚拟环境 (可选)
+```powershell
+# 激活虚拟环境，这样你的所有Python操作都会在这个隔离环境中进行
+.\.venv\Scripts\activate
+```
+
+# 二、操作指南
 1.	Fork 本项目。点击 Fork 按钮，创建一个新的派生项目到自己的工作区（Create a new fork）
 
 2.	克隆派生
@@ -32,32 +55,10 @@ git push --set-upstream origin your-branch-name
 
 9. 如果在你提交之前，原始项目有更新，请同步更新到你的派生项目
 ``` powershell
-git remote add upstream https://github.com/645359132/short-term1-homework.git
+git remote add upstream https://github.com/GGB0ND132/short-term-work.git
 git fetch upstream
 git checkout your-branch-name
-git merge upstream/main
+git merge upstream/master
 cd your-local-project-path
 uv sync
-```
-# 二、环境配置
-1. 安装uv
-```powershell
-pip install uv
-```
-
-2. 检查uv环境
-```powershell
-uv --version
-```
-如果有报错，请移步 https://github.com/astral-sh/uv 看看教程
-
-3. 创建虚拟环境并安装依赖
-```powershell
-cd your-local-project-path
-uv sync
-```
-4. 激活虚拟环境 (可选)
-```powershell
-# 激活虚拟环境，这样你的所有Python操作都会在这个隔离环境中进行
-.\.venv\Scripts\activate
 ```
