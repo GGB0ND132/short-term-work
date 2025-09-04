@@ -33,7 +33,15 @@ uv sync
 # 激活虚拟环境，这样你的所有Python操作都会在这个隔离环境中进行
 .\.venv\Scripts\activate
 ```
-
+# 二、项目启动
+1. 启动分析,选择对应要分析的
+```powershell
+python main.py
+```
+2. 启动streamlit
+```powershell
+streamlit run dashboard.py
+```
 # 三、GitHub操作指南
 1.	Fork 本项目。点击 Fork 按钮，创建一个新的派生项目到自己的工作区（Create a new fork）
 
