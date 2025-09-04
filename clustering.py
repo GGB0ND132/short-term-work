@@ -19,6 +19,16 @@ from sklearn.decomposition import PCA
 from sklearn.metrics import silhouette_score
 import os
 
+import matplotlib.font_manager as fm
+# 解决中文显示问题
+font_path = 'C:/Windows/Fonts/msyhl.ttc'
+if os.path.exists(font_path):
+    fm.fontManager.addfont(font_path)
+    plt.rcParams['font.family'] = 'Microsoft YaHei'
+else:
+    print(f"警告：未找到中文字体文件 {font_path}，图表中的中文可能无法正常显示。")
+plt.rcParams['axes.unicode_minus'] = False   # 解决负号显示问题
+
 # 设置显示选项
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', 1000)
@@ -94,7 +104,6 @@ def visualize_optimal_k(inertia, silhouette, output_dir='output/clustering'):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     
-    # 绘制肘部曲线
     plt.figure(figsize=(12, 5))
     
     plt.subplot(1, 2, 1)

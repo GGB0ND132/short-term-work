@@ -317,12 +317,6 @@ def main():
     # 创建新特征
     cleaned_data = create_features(players_df, seasons_stats_df, player_data_df)
     
-    # 打印清洗后的数据集信息
-    print("\n清洗后的数据集信息:")
-    print(f"形状: {cleaned_data.shape}")
-    print(f"列: {cleaned_data.columns.tolist()}")
-    print(f"前5行:\n{cleaned_data.head()}")
-    
     # 保存清洗后的数据
     cleaned_data.to_csv(OUTPUT_PATH, index=False)
     print(f"\n清洗后的数据已保存到: {OUTPUT_PATH}")

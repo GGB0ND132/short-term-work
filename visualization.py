@@ -17,6 +17,16 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import os
 
+import matplotlib.font_manager as fm
+# 解决中文显示问题
+font_path = 'C:/Windows/Fonts/msyhl.ttc'
+if os.path.exists(font_path):
+    fm.fontManager.addfont(font_path)
+    plt.rcParams['font.family'] = 'Microsoft YaHei'
+else:
+    print(f"警告：未找到中文字体文件 {font_path}，图表中的中文可能无法正常显示。")
+plt.rcParams['axes.unicode_minus'] = False   # 解决负号显示问题
+
 # 设置显示选项
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', 1000)
@@ -399,29 +409,17 @@ def create_interactive_charts(df, output_dir='output/visualizations'):
         hovermode="x unified"
     )
     
-    fig.write_html(os.path.join(output_dir, '12_交互式历史趋势.html'))
+    fig.write_html(os.path.join(output_dir, '12_交互式历史趋势图.html'))
     
-    # 4. 交互式热图：相关性分析
-    corr_columns = ['PPG(场均得分)', 'RPG(场均篮板)', 'APG(场均助攻)', 
-                    'SPG(场均抢断)', 'BPG(场均盖帽)', '效率值',
-                    'PER(平均效率值)', 'WS(总胜利贡献值)']
-    
-    corr_matrix = df[corr_columns].corr()
-    
-    fig = px.imshow(corr_matrix, text_auto=True, aspect="auto",
-                    title='NBA球员各项能力指标相关性（交互式热图）',
-                    color_continuous_scale='RdBu_r')
-    
-    fig.write_html(os.path.join(output_dir, '13_交互式相关性热图.html'))
-    
-    # 5. 3D散点图：得分-篮板-助攻
-    fig = px.scatter_3d(df, x='PPG(场均得分)', y='RPG(场均篮板)', z='APG(场均助攻)',
+    # 4. 3D散点图
+    # 修正：使用过滤掉NaN值的df_filtered，而不是原始的df
+    fig = px.scatter_3d(df_filtered, x='PPG(场均得分)', y='RPG(场均篮板)', z='APG(场均助攻)',
                        color='position_group', size='效率值',
                        hover_name='name', opacity=0.7,
                        title='NBA球员得分-篮板-助攻三维分布')
     
     fig.update_layout(
-        scene = dict(
+        scene=dict(
             xaxis_title='场均得分',
             yaxis_title='场均篮板',
             zaxis_title='场均助攻'
